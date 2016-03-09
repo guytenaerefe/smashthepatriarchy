@@ -1,17 +1,9 @@
 #!/usr/bin/env ruby
-require 'twitter'
-require 'yaml'
-
 class Matriarch
 
     def initialize(config, client)
         @config = config
         @client = client
-    end
-
-    # Debugging
-    def test_done
-        puts check_done('707682618209341440z')
     end
 
     # Append ID to file 
@@ -43,9 +35,3 @@ class Matriarch
     end
 
 end
-
-config = YAML.load_file('config.yml')
-client = client = Twitter::REST::Client.new(config['twitter_credentials'])
-
-spill_it = Matriarch.new(config, client)
-spill_it.test_done
