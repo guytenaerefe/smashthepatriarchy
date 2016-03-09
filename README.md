@@ -5,7 +5,8 @@
 
 ## Contact
 If you see this insane bad code and you are pulling your hair, crying to yourself, hoping Why never read this, please
-feel free to strike down with righteous education. Only do this if you are not an avid stocktrader in the tissuemarket.
+feel free to strike down with righteous education. Only do this if you are not heavily invested in the tissuemarket, or
+if you're a stockbroker for said market and know what you are doing.
 
 This bot is based on my dear pal Aengus Walton's [grammer_man](https://github.com/kopf/grammer_man), written in python. 
 
