@@ -1,5 +1,6 @@
 # Experimental twitter bot in ruby [![Build Status](https://travis-ci.org/guytenaerefe/smashthepatriarchy.svg?branch=master)](https://travis-ci.org/guytenaerefe/smashthepatriarchy)
 
+* `bundle install`
 * Place a `config.yml` with consumer_key/secret and access_token/secret in project root (See `config.yml.example`)
 
 ## Todo
