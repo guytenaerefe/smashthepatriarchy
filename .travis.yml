@@ -1,3 +1,5 @@
 language: ruby
 rvm:
   - 2.2
+
+before_script: echo "707682618209341440" > tweets.done
