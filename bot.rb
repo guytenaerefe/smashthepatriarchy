@@ -25,12 +25,15 @@ class Matriarch
         counter = 0
         loop do
             tweet = @client.search("businesswoman").first
-            update_done(tweet.id)
-            #rand_time = rand(120*60..240*60)
-            rand_time = rand(10..300)
-            puts tweet.text
-            puts 'Tweeted, now resting for a while'
-            sleep rand_time
+            if !check_done(tweet.id)
+                update_done(tweet.id) 
+                rand_time = rand(10..300)
+                puts tweet.text
+                puts 'Tweeted, now resting for a while'
+                sleep rand_time
+            else 
+                puts 'Done this tweet already, let\'s try another'
+            end
         end
     end
 
