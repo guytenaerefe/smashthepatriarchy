@@ -73,10 +73,12 @@ class Matriarch
             elseif counter > 50 
                 counter = 0
                 rand_time = rand(1800..3600)
+                time = Time.new                
                 puts '--- Done a shitload of tweets, let\'s try another in a while (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ---'                
                 sleep rand_time
             else 
                 rand_time = rand(180..360)
+                time = Time.new
                 puts '--- Done this tweet already, let\'s try another in a while (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ----'                
                 sleep rand_time
             end
