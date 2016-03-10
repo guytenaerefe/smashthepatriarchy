@@ -1,6 +1,6 @@
 # Smash the Patriarchy! [![Build Status](https://travis-ci.org/guytenaerefe/smashthepatriarchy.svg?branch=master)](https://travis-ci.org/guytenaerefe/smashthepatriarchy)
 
-Raising awareness about genderbiased words in everyday life while learning a thing or two about ruby.
+Raising awareness about genderbiased words in everyday life while learning a thing or two about ruby. Find it on [twitter](https://twitter.com/don_quibot)
 
 * `$ bundle install`
 * `$ cp config.yml.example config.yml` and fill it)
