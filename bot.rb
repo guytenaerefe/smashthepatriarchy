@@ -59,7 +59,6 @@ class Matriarch
         loop do
             word = random_word
             tweet = @client.search(word.bad).first
-            #line = random_line()
             if !check_done(tweet.id) || counter > 50
                 reply = random_line(tweet.user.screen_name, word.bad, word.good) + " #SMASHTHEPATRIARCHY".chomp
                 puts reply
