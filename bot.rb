@@ -61,13 +61,14 @@ class Matriarch
             tweet = @client.search(word.bad).first
             #line = random_line()
             if !check_done(tweet.id) || counter > 50
-                reply = random_line(tweet.user.screen_name, word.bad, word.good)
+                reply = random_line(tweet.user.screen_name, word.bad, word.good) + " #SMASHTHEPATRIARCHY".chomp
+                puts reply
                 # SEND TWEET HERE. HOLD ON TO YOUR HORSES
                 counter += 1
                 update_done(tweet.id) 
-                rand_time = rand(10..300)
                 puts tweet.text
-                puts 'Tweeted, now resting for a while'
+                rand_time = rand(180..360)
+                puts 'Tweeted, now resting for a while (' + (rand_time/60).to_s + 'm)'
                 sleep rand_time
             else 
                 puts 'Done this tweet already, let\'s try another'
