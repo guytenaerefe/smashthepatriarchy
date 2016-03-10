@@ -59,7 +59,7 @@ class Matriarch
         loop do
             word = random_word
             tweet = @client.search(word.bad + ' -rt', lang: "en").first
-            if !check_done(tweet.id) || counter > 50
+            if !check_done(tweet.id) && counter > 50 && tweet.user.screen_name != 'don_quibot'
                 reply = random_line(tweet.user.screen_name, word.bad, word.good)
                 counter += 1
                 update_done(tweet.id) 
@@ -67,12 +67,17 @@ class Matriarch
                 puts tweet.text
                 puts reply
                 rand_time = rand(180..900)
-                puts '--- Tweeted, now resting for a while (' + (rand_time/60).to_s + 'm) ---'
+                time = Time.new
+                puts '--- Tweeted, now resting for a while (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ---'
+                sleep rand_time
+            elseif counter > 50 
+                counter = 0
+                rand_time = rand(1800..3600)
+                puts '--- Done a shitload of tweets, let\'s try another in a while (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ---'                
                 sleep rand_time
             else 
-                counter = 0
-                puts 'Done this tweet already, let\'s try another in a while'
-                rand_time = rand(1800..7200)
+                rand_time = rand(180..360)
+                puts '--- Done this tweet already, let\'s try another in a while (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ----'                
                 sleep rand_time
             end
         end
