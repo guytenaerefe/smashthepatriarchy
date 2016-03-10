@@ -50,7 +50,7 @@ class Matriarch
         reply_line = reply_line.gsub('$GOOD', good.chomp)
         reply_line = reply_line.gsub('$BAD', bad.chomp)
         reply_line = reply_line.gsub('$NAME', name.chomp)
-        return reply_line
+        return reply_line.chomp
     end
 
     # Main loop
@@ -58,13 +58,12 @@ class Matriarch
         counter = 0
         loop do
             word = random_word
-            tweet = @client.search(word.bad + ' -rt').first
+            tweet = @client.search(word.bad + ' -rt', lang: "en").first
             if !check_done(tweet.id) || counter > 50
-                reply = random_line(tweet.user.screen_name, word.bad, word.good) + " #SMASHTHEPATRIARCHY"
-                reply.gsub('\n', '')
+                reply = random_line(tweet.user.screen_name, word.bad, word.good)
                 counter += 1
                 update_done(tweet.id) 
-                #@client.update(reply, in_reply_to_status_id: tweet.id)
+                @client.update(reply, in_reply_to_status_id: tweet.id)
                 puts tweet.text
                 puts reply
                 rand_time = rand(180..900)
