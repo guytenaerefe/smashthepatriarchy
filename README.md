@@ -18,4 +18,3 @@ Run the single puny test with `rake`. Oh it will fail! (_hint:_ `echo "707682618
 ## Todo
 * Need to add all my twitter tokens in Travis so the tests wont bork. Ok bye!
 
-Does nothing yet! _Surprise!_
