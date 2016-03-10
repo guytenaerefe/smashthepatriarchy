@@ -47,9 +47,9 @@ class Matriarch
         File.foreach("linelist").each_with_index do |line,number|
             reply_line = line if rand < 1.0/(number+1)
         end
-        reply_line = reply_line.gsub('$GOOD', good)
-        reply_line = reply_line.gsub('$BAD', bad)
-        reply_line = reply_line.gsub('$NAME', name)
+        reply_line = reply_line.gsub('$GOOD', good.chomp)
+        reply_line = reply_line.gsub('$BAD', bad.chomp)
+        reply_line = reply_line.gsub('$NAME', name.chomp)
         return reply_line
     end
 
@@ -58,19 +58,23 @@ class Matriarch
         counter = 0
         loop do
             word = random_word
-            tweet = @client.search(word.bad).first
+            tweet = @client.search(word.bad + ' -rt').first
             if !check_done(tweet.id) || counter > 50
-                reply = random_line(tweet.user.screen_name, word.bad, word.good) + " #SMASHTHEPATRIARCHY".chomp
-                puts reply
-                # SEND TWEET HERE. HOLD ON TO YOUR HORSES
+                reply = random_line(tweet.user.screen_name, word.bad, word.good) + " #SMASHTHEPATRIARCHY"
+                reply.gsub('\n', '')
                 counter += 1
                 update_done(tweet.id) 
+                #@client.update(reply, in_reply_to_status_id: tweet.id)
                 puts tweet.text
-                rand_time = rand(180..360)
-                puts 'Tweeted, now resting for a while (' + (rand_time/60).to_s + 'm)'
+                puts reply
+                rand_time = rand(180..900)
+                puts '--- Tweeted, now resting for a while (' + (rand_time/60).to_s + 'm) ---'
                 sleep rand_time
             else 
-                puts 'Done this tweet already, let\'s try another'
+                counter = 0
+                puts 'Done this tweet already, let\'s try another in a while'
+                rand_time = rand(1800..7200)
+                sleep rand_time
             end
         end
     end

@@ -11,6 +11,7 @@ policeman:police officer
 policewoman:police officer
 salesman:sales associate
 layman:layperson
-man-made:artificial
+manmade:artificial
 workmanlike:skilful
 hostess:host
+man:human
