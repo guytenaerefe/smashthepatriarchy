@@ -42,13 +42,27 @@ class Matriarch
         return word
     end
 
+    def random_line(name, bad, good)
+        reply_line = nil
+        File.foreach("linelist").each_with_index do |line,number|
+            reply_line = line if rand < 1.0/(number+1)
+        end
+        reply_line = reply_line.gsub('$GOOD', good)
+        reply_line = reply_line.gsub('$BAD', bad)
+        reply_line = reply_line.gsub('$NAME', name)
+        return reply_line
+    end
+
     # Main loop
     def watch
         counter = 0
         loop do
             word = random_word
             tweet = @client.search(word.bad).first
-            if !check_done(tweet.id) 
+            #line = random_line()
+            if !check_done(tweet.id) || counter > 50
+                reply = random_line(tweet.user.screen_name, word.bad, word.good)
+                # SEND TWEET HERE. HOLD ON TO YOUR HORSES
                 counter += 1
                 update_done(tweet.id) 
                 rand_time = rand(10..300)
