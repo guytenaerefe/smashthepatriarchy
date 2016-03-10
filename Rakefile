@@ -1,6 +1,6 @@
 namespace 'smashthepatriarchy' do
     task :check_id_done do
-        system "ruby bot.test.rb"
+        system "ruby ./tests/bot_test.rb"
     end
 end
 
