@@ -6,7 +6,7 @@ Raising awareness about genderbiased words in everyday life while learning a thi
 * `$ cp config.yml.example config.yml` and fill it)
 
 ## Contact
-If you see this insane bad code and you are pulling your hair, crying to yourself, hoping Why never read this, please
+If you see this insane bad code and you are pulling your hair, crying to yourself, hoping [Why](https://en.wikipedia.org/wiki/Why_the_lucky_stiff) will never read this, please
 feel free to strike down with righteous education. Only do this if you are not heavily invested in the tissuemarket, or
 if you're a stockbroker for said market and know what you are doing.
 
