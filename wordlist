@@ -1,16 +1,16 @@
-businesswoman: businessperson
-businessman: businessperson
-comedienne: comedian
-poetess: poet
-stewardess: flight attendant
-waitress: waiter
-headmaster:
-headmistress: director
-policeman: police officer
-policewoman: police officer
-salesman: sales associate
-foreman: supervisor
-layman: layperson
-man-made: artificial
-manpower: workforce
-workmanlike: skilful
+businesswoman:businessperson
+businessman:businessperson
+comedienne:comedian
+poetess:poet
+stewardess:flight attendant
+waitress:waiter
+headmaster:director
+headmistress:director
+policeman:police officer
+policewoman:police officer
+salesman:sales associate
+foreman:supervisor
+layman:layperson
+man-made:artificial
+manpower:workforce
+workmanlike:skilful
