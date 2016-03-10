@@ -8,3 +8,4 @@ client = client = Twitter::REST::Client.new(config['twitter_credentials'])
 
 spill_it = Matriarch.new(config, client)
 spill_it.watch
+
