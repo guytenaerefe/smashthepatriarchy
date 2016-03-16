@@ -2,4 +2,12 @@ language: ruby
 rvm:
   - 2.2
 
-before_script: echo "707682618209341440" > tweets.done
+before_script: 
+    - echo "707682618209341440" > tweets.done
+    - sh -c "cat > /config.yml" <<EOT
+        twitter_credentials:
+          consumer_key: '$CONSUMER_KEY'
+          consumer_secret: '$CONSUMER_SECRET' 
+          access_token: '$ACCESS_TOKEN'
+          access_token_secret: '$ACCESS_TOKEN_SECRET' 
+      EOT
