@@ -60,6 +60,15 @@ class Matriarch
         sleep rand_time
     end
 
+    def send_tweet(reply, tweetId = nil)
+        if tweetId === nil 
+            #@client.update(reply)
+        else
+            update_done(tweetId)
+            #@client.update(reply, in_reply_to_status_id: tweet.id)
+        end
+    end
+
     # Main loop
     def watch
         counter = 0
@@ -70,8 +79,8 @@ class Matriarch
                 if !check_done(tweet.id) && counter < 50 && tweet.user.screen_name != 'don_quibot'
                     reply = random_line(tweet.user.screen_name, word.bad, word.good)
                     counter += 1
-                    update_done(tweet.id)
-                    @client.update(reply, in_reply_to_status_id: tweet.id)
+                    send_tweet(reply, tweet.id)
+                    # this just for showing in console
                     puts tweet.text
                     puts reply
                     output_sleep(180,900, 'Tweeted. Taking a rest')
@@ -89,6 +98,7 @@ class Matriarch
                 retry                    
             rescue Twitter::Error::Forbidden
                 puts "Twitter:Forbidden. Probably over 140 characters"
+                raise Twitter::Error::Forbidden
             end
         end
     end
