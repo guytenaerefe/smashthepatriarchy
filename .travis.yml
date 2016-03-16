@@ -4,8 +4,4 @@ rvm:
 
 before_script: 
     - echo "707682618209341440" > ./tweets.done
-    - echo "twitter_credentials:" >> ./travis.yml
-    - echo "  consumer_key: '$CONSUMER_KEY'" >> ./travis.yml
-    - echo "  consumer_secret: '$CONSUMER_SECRET'" >> ./travis.yml
-    - echo "  access_token: '$ACCESS_TOKEN'" >> ./travis.yml
-    - echo "  access_token_secret: '$ACCESS_TOKEN_SECRET'" >> ./travis.yml
+    - cp config.travis.yml config.yml
