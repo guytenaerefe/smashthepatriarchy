@@ -12,10 +12,15 @@ end
 class Matriarch
 
     # I get the creeping feeling I am rubbing ruby the wrong way
-    def initialize(config, client)
+    def initialize(config = {}, client = {}, options = {})
         @config = config
         @client = client
+        @options = options
     end
+
+    def dryrun
+        return @options[:dryrun] if @options.has_key?(:dryrun)
+    end 
 
     # Append ID to file 
     def update_done(id)
@@ -71,7 +76,11 @@ class Matriarch
                     reply = random_line(tweet.user.screen_name, word.bad, word.good)
                     counter += 1
                     update_done(tweet.id)
-                    #@client.update(reply, in_reply_to_status_id: tweet.id)
+
+                    if !dryrun 
+                        @client.update(reply, in_reply_to_status_id: tweet.id) unless dryrun
+                    end
+
                     puts tweet.text
                     puts reply
                     output_sleep(180,900, 'Tweeted. Taking a rest')
