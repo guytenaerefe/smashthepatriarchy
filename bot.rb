@@ -56,7 +56,7 @@ class Matriarch
     def output_sleep(min,max,text)
         rand_time = rand(min..max)
         time = Time.new
-        puts '--- '+ text +' (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ---'
+        puts "--- #{text} ({#{(rand_time/60).to_s}m at #{time.inspect}) ---"
         sleep rand_time
     end
 
@@ -71,7 +71,7 @@ class Matriarch
                     reply = random_line(tweet.user.screen_name, word.bad, word.good)
                     counter += 1
                     update_done(tweet.id)
-                    @client.update(reply, in_reply_to_status_id: tweet.id)
+                    #@client.update(reply, in_reply_to_status_id: tweet.id)
                     puts tweet.text
                     puts reply
                     output_sleep(180,900, 'Tweeted. Taking a rest')
