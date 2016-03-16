@@ -78,7 +78,7 @@ class Matriarch
                     update_done(tweet.id)
 
                     if !dryrun 
-                        @client.update(reply, in_reply_to_status_id: tweet.id) unless dryrun
+                        @client.update(reply, in_reply_to_status_id: tweet.id) 
                     end
 
                     puts tweet.text
