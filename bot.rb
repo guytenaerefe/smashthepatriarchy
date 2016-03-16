@@ -12,10 +12,15 @@ end
 class Matriarch
 
     # I get the creeping feeling I am rubbing ruby the wrong way
-    def initialize(config, client)
+    def initialize(config = {}, client = {}, options = {})
         @config = config
         @client = client
+        @options = options
     end
+
+    def dryrun
+        return @options[:dryrun] if @options.has_key?(:dryrun)
+    end 
 
     # Append ID to file 
     def update_done(id)
@@ -56,16 +61,16 @@ class Matriarch
     def output_sleep(min,max,text)
         rand_time = rand(min..max)
         time = Time.new
-        puts '--- '+ text +' (' + (rand_time/60).to_s + 'm at ' + time.inspect + ') ---'
+        puts "--- #{text} ({#{(rand_time/60).to_s}m at #{time.inspect}) ---"
         sleep rand_time
     end
 
     def send_tweet(reply, tweetId = nil)
         if tweetId === nil 
-            #@client.update(reply)
+            @client.update(reply)
         else
             update_done(tweetId)
-            #@client.update(reply, in_reply_to_status_id: tweet.id)
+            @client.update(reply, in_reply_to_status_id: tweet.id)
         end
     end
 
@@ -79,8 +84,12 @@ class Matriarch
                 if !check_done(tweet.id) && counter < 50 && tweet.user.screen_name != 'don_quibot'
                     reply = random_line(tweet.user.screen_name, word.bad, word.good)
                     counter += 1
-                    send_tweet(reply, tweet.id)
-                    # this just for showing in console
+                    update_done(tweet.id)
+                    if !dryrun 
+                        send_tweet(reply, tweet.id)
+                    else
+                        puts "dry run, not actually tweetering!"
+                    end
                     puts tweet.text
                     puts reply
                     output_sleep(180,900, 'Tweeted. Taking a rest')
