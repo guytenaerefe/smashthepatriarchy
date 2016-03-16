@@ -3,11 +3,9 @@ rvm:
   - 2.2
 
 before_script: 
-    - echo "707682618209341440" > tweets.done
-    - sh -c "cat > /config.yml" <<EOT
-        twitter_credentials:
-          consumer_key: '$CONSUMER_KEY'
-          consumer_secret: '$CONSUMER_SECRET' 
-          access_token: '$ACCESS_TOKEN'
-          access_token_secret: '$ACCESS_TOKEN_SECRET' 
-      EOT
+    - echo "707682618209341440" > ./tweets.done
+    - echo "twitter_credentials:" >> ./travis.yml
+    - echo "  consumer_key: '$CONSUMER_KEY'" >> ./travis.yml
+    - echo "  consumer_secret: '$CONSUMER_SECRET'" >> ./travis.yml
+    - echo "  access_token: '$ACCESS_TOKEN'" >> ./travis.yml
+    - echo "  access_token_secret: '$ACCESS_TOKEN_SECRET'" >> ./travis.yml
