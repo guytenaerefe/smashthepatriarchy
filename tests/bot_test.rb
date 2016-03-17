@@ -2,6 +2,7 @@
 require 'test/unit'
 require 'twitter'
 require 'yaml'
+require 'erb'
 require './bot'
 
 class TC_Bot < Test::Unit::TestCase
