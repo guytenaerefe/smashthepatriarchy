@@ -3,7 +3,7 @@
 Raising awareness about genderbiased words in everyday life while learning a thing or two about ruby. Find it on [twitter](https://twitter.com/don_quibot)
 
 * `$ bundle install`
-* `$ cp config.yml.example config.yml` and fill it)
+* `$ cp config.yml.example config.yml` (and fill it with your app credentials)
 
 ## Contact
 If you see this insane bad code and you are pulling your hair, crying to yourself, hoping [Why](https://en.wikipedia.org/wiki/Why_the_lucky_stiff) will never read this, please
@@ -14,7 +14,10 @@ This bot is based on my dear pal Aengus Walton's [grammer_man](https://github.co
 
 ## Run test
 Run the single puny test with `rake`. Oh it will fail! (_hint:_ `echo "707682618209341440" > tweets.done`)
+For running on Travis-CI, please enter your Twitter app credentials as environment variables. In the travis build
+the `config.travis.yml` will be copied to `config.yml`, so it will work locally as well as on travis.
 
 ## Todo
-* Need to add all my twitter tokens in Travis so the tests wont bork. Ok bye!
+* Add moar random sentences
+* Remove some false-positive sensitive words (like waitress) 
 
