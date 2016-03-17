@@ -9,7 +9,7 @@ require './bot'
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: runner.rb [options]"
-  opts.on('-d', '--dry-run', 'Dry Run: Don\'t actually tweet it') { |v| options[:dryrun] = v }
+  opts.on('-n', '--dry-run', 'Dry Run: Don\'t actually tweet it') { |v| options[:dryrun] = v }
 end.parse!
 
 config = YAML.load_file('config.yml')
