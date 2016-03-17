@@ -20,7 +20,9 @@ class TC_Bot < Test::Unit::TestCase
     end
 
     def test_tweet_too_long
-        config = YAML.load_file('config.yml')
+        template = ERB.new File.new("config.yml").read
+        config = YAML.load template.result(binding)
+        #config = YAML.load_file('config.yml')
         client = client = Twitter::REST::Client.new(config['twitter_credentials'])
         test_it = Matriarch.new(config, client)
         assert_raise Twitter::Error::Forbidden do
