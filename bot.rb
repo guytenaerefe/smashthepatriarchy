@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# Word from key/value. TODO: Find out if this is not ass-backward
+# Word from key/value.
 class Word 
     attr_reader :bad, :good
     def initialize (bad, good)
